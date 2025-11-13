@@ -90,12 +90,12 @@ function Sidebar() {
           <div className="flex-grow flex flex-col items-center py-5 space-y-6">
             {/* <MenuItem link="/dashboard" Icon={Squares2X2Icon}/>
             <MenuItem link="/organizational" Icon={FolderIcon}/>
-            <MenuItem link="/role" Icon={UserPlusIcon}/>
-            <MenuItem link="/assetManagement" Icon={DocumentTextIcon}/>
-            <MenuItem link="/processFramework" Icon={WrenchScrewdriverIcon}/>
+            <MenuItem link="/role" Icon={UserPlusIcon}/> */}
+            <MenuItem link="/payroll" Icon={DocumentTextIcon}/>
+            {/* <MenuItem link="/processFramework" Icon={WrenchScrewdriverIcon}/>
             <MenuItem link="/reviewAndAudits" Icon={ArrowUpCircleIcon}/>
-            <MenuItem link="/objectives" Icon={Bars2Icon}/> */}
-            <MenuItem link="/training" Icon={AcademicCapIcon}/>
+            <MenuItem link="/objectives" Icon={Bars2Icon}/>
+            <MenuItem link="/training" Icon={AcademicCapIcon}/> */}
             {/* <MenuItem link="/operations" Icon={ArrowPathIcon}/>
             <MenuItem link="/sprints" Icon={CalendarIcon}/>    */}
             {/* <MenuItem link="/test-plans" Icon={TableCellsIcon}/>  
