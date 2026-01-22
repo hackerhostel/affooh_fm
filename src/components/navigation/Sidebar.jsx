@@ -1,23 +1,13 @@
-import { Menu, Transition } from '@headlessui/react';
-import { CogIcon, BellIcon, FolderIcon } from '@heroicons/react/24/outline';
-
-import {signOut} from 'aws-amplify/auth';
+import {Menu, Transition} from '@headlessui/react';
 import {
   ArrowRightStartOnRectangleIcon,
-  CalendarIcon,
+  BellIcon,
+  CogIcon,
   DocumentTextIcon,
-  Square3Stack3DIcon,
-  Squares2X2Icon,
-  TableCellsIcon,
-  UserIcon,
-  UsersIcon,
-  UserPlusIcon,
-  WrenchScrewdriverIcon,
-  ArrowUpCircleIcon,
-  Bars2Icon,
-  AcademicCapIcon,
-  ArrowPathIcon
+  UserIcon
 } from '@heroicons/react/24/outline';
+
+import {signOut} from 'aws-amplify/auth';
 import {Link, useHistory, useLocation} from 'react-router-dom';
 import AffoohLogo from '../../assets/affooh_logo.png';
 import {useSelector} from 'react-redux';
@@ -35,8 +25,9 @@ function Sidebar() {
   const handleSignOut = async () => {
     setLoading(true);
     try {
-      await signOut({ global: true });
-      window.location.reload();
+      await signOut({global: true});
+    } catch (err) {
+      console.error("Logout failed", err);
     } finally {
       setLoading(false);
     }
