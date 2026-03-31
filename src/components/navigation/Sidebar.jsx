@@ -25,9 +25,15 @@ function Sidebar() {
   const handleSignOut = async () => {
     setLoading(true);
     try {
-      await signOut({global: true});
+      const logoutChannel = new BroadcastChannel("affooh_logout");
+      logoutChannel.postMessage({ type: "LOGOUT" });
+      logoutChannel.close();
+      await signOut({ global: true });
     } catch (err) {
       console.error("Logout failed", err);
+      localStorage.clear();
+      sessionStorage.clear();
+      window.location.replace("/login");
     } finally {
       setLoading(false);
     }
