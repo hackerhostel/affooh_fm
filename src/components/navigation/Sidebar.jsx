@@ -10,14 +10,15 @@ import {
 import {signOut} from 'aws-amplify/auth';
 import {Link, useHistory, useLocation} from 'react-router-dom';
 import AffoohLogo from '../../assets/affooh_logo.png';
-import {useSelector} from 'react-redux';
-import {selectUser} from '../../state/slice/authSlice';
+import {useDispatch, useSelector} from 'react-redux';
+import {clearAuthState, selectUser} from '../../state/slice/authSlice';
 import React, {Fragment, useState} from 'react';
 import Notification from "./NotificationPopup.jsx";
 
 function Sidebar() {
   const location = useLocation();
   const history = useHistory();
+  const dispatch = useDispatch();
   const userDetails = useSelector(selectUser);
   const [loading, setLoading] = useState(false);
   const [isOpenPopUp, setIsOpenPopUp] = useState(false);
@@ -36,12 +37,15 @@ function Sidebar() {
       // Set same-origin event
       localStorage.setItem('logout-event', Date.now().toString());
       
+      // Clear redux state to update UI immediately
+      dispatch(clearAuthState());
+      
       // Finally clear local logs
       localStorage.clear();
       sessionStorage.clear();
       
-      // Removed window.location.href = "/auth" here because it overrides 
-      // the AWS Amplify Hosted UI automatic redirect to the Cognito logout URL.
+      // Redirect to local login page.
+      window.location.href = "/login";
     } catch (err) {
       console.error("Logout failed", err);
     } finally {
